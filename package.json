@@ -1,0 +1,39 @@
+{
+  "name": "angular2-template",
+  "version": "0.0.1",
+  "description": "A project template for Angular2",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run watch",
+    "build": "npm run build:ts && npm run build:css",
+    "build:ts": "browserify -v -d -o src/bundle.js -p [ tsify ] src/scripts/app.ts",
+    "build:css": "postcss --map.inline -c postcss.json",
+    "watch": "npm run watch:ts & npm run watch:css & npm run watch:html",
+    "watch:ts": "watchify -v -d -o src/bundle.js -p [ tsify ] src/scripts/app.ts",
+    "watch:css": "postcss -w --map.inline -c postcss.json",
+    "watch:html": "browser-sync start --server src --files 'src/index.html, src/bundle.js, src/bundle.css'",
+    "postinstall": "typings install",
+    "lint": "tslint src/scripts/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mizdra/angular2-template.git"
+  },
+  "author": "mizdra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mizdra/angular2-template/issues"
+  },
+  "homepage": "https://github.com/mizdra/angular2-template#readme",
+  "dependencies": {
+    "angular2": "^2.0.0-beta.12",
+    "es6-shim": "^0.35.0",
+    "reflect-metadata": "^0.1.2",
+    "rxjs": "^5.0.0-beta.2",
+    "zone.js": "^0.6.6"
+  },
+  "devDependencies": {
+    "tsify": "^0.14.1",
+    "typescript": "^1.8.9"
+  }
+}
